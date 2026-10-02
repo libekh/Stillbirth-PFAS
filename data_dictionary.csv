@@ -1,0 +1,21 @@
+variable,description,source,notes
+SEQN,NHANES participant identifier,P_DEMO,Public-use identifier used to merge NHANES component files.
+age_years,"Age at NHANES screening, years",P_DEMO: RIDAGEYR,
+race_ethnicity_code,NHANES race/Hispanic origin code,P_DEMO: RIDRETH3,Use race_ethnicity for labels.
+race_ethnicity,Race/Hispanic origin label,Derived from RIDRETH3,
+bmi_kg_m2,"Measured body mass index, kg/m^2",P_BMX: BMXBMI,
+poverty_income_ratio,Family income-to-poverty ratio,P_DEMO: INDFMPIR,
+total_deliveries,"Total vaginal/Cesarean deliveries, including stillbirths",P_RHQ: RHD167,Public-use file top-codes 5 or more deliveries as 5.
+live_birth_deliveries,Number of deliveries resulting in a live birth,P_RHQ: RHQ171,Public-use file top-codes 5 or more live-birth deliveries as 5.
+stillbirth_history,Derived history of >=1 stillbirth delivery,Derived from RHD167 and RHQ171,1 if total deliveries exceed live-birth deliveries; ambiguous 5/5 top-coded histories excluded.
+pfhxs_ng_ml,"Serum perfluorohexane sulfonic acid (PFHxS), ng/mL",P_PFAS: LBXPFHS,
+pfna_ng_ml,"Serum perfluorononanoic acid (PFNA), ng/mL",P_PFAS: LBXPFNA,
+n_pfoa_ng_ml,"Serum linear perfluorooctanoic acid (n-PFOA), ng/mL",P_PFAS: LBXNFOA,
+n_pfos_ng_ml,"Serum linear perfluorooctane sulfonate (n-PFOS), ng/mL",P_PFAS: LBXNFOS,
+sm_pfos_ng_ml,"Serum monomethyl-branched PFOS isomers (Sm-PFOS), ng/mL",P_PFAS: LBXMFOS,
+pfos_total_ng_ml,"Calculated total PFOS, ng/mL",Derived,n-PFOS + Sm-PFOS.
+pfas_subsample_weight,PFAS one-third subsample weight,P_PFAS: WTSBAPRP,Use for PFAS analyses.
+survey_stratum,Masked variance pseudo-stratum,P_DEMO: SDMVSTRA,Use with survey_psu for complex survey variance estimation.
+survey_psu,Masked variance pseudo-PSU,P_DEMO: SDMVPSU,Use with survey_stratum.
+primary_model_complete_case,Complete-case flag for primary PFHxS model,Derived,"1 = nonmissing outcome, PFHxS, age, race/ethnicity, BMI, PIR, deliveries, survey weight/stratum/PSU."
+sensitivity_age_20_49,Age-restricted sensitivity flag,Derived,1 = age 20-49 years.
