@@ -1,0 +1,6 @@
+model,n,cases,aOR_per_doubling,CI_low,CI_high,p_value
+"Primary (ages 20-59), PFHxS",466,30,2.26,1.2,4.25,0.0151
+"Sensitivity (ages 20-49), PFHxS",323,19,2.12,0.97,4.61,0.0577
+"Comparison, pfna_ng_ml",466,30,0.98,0.68,1.43,0.931
+"Comparison, n_pfoa_ng_ml",466,30,1.67,0.84,3.29,0.131
+"Comparison, pfos_total_ng_ml",466,30,1.51,0.77,2.95,0.211
