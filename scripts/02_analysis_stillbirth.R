@@ -91,3 +91,8 @@ comparison_results <- lapply(pfas_vars, function(v) {
 bind_rows(comparison_results) %>%
   select(exposure, aOR, CI_low, CI_high, p.value) %>%
   print()
+
+# Save results to output/ so they can be viewed on GitHub.
+dir.create("output", showWarnings = FALSE)
+results <- bind_rows(primary %>% mutate(model = "Primary (ages 20-59), PFHxS", n = nrow(cc), cases = sum(cc$stillbirth_history)), sensitivity %>% mutate(model = "Sensitivity (ages 20-49), PFHxS", n = nrow(des_20_49$variables), cases = sum(des_20_49$variables$stillbirth_history)), bind_rows(comparison_results) %>% mutate(model = paste0("Comparison, ", exposure), n = nrow(cc), cases = sum(cc$stillbirth_history))) %>% transmute(model, n, cases, aOR_per_doubling = round(aOR, 2), CI_low = round(CI_low, 2), CI_high = round(CI_high, 2), p_value = signif(p.value, 3))
+write_csv(results, "output/pfas_stillbirth_results.csv")
